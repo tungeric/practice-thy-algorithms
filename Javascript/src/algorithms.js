@@ -10,16 +10,16 @@ if(typeof Algorithms === "undefined") {
 // Do not use string conversion within your method.
 Algorithms.digitalRoot = function (number) {
   let sum = 0;
-  console.log("Number",number);
+  // console.log("Number",number);
   while(number > 0) {
     sum += number % 10;
     number = (number - (number % 10)) / 10;
   }
   if(sum >= 10) { 
-    console.log("Sum", sum);
+    // console.log("Sum", sum);
     sum = Algorithms.digitalRoot(sum);
   }
-  console.log("DONE", sum)
+  // console.log("DONE", sum)
   return sum;
 };
 
@@ -41,9 +41,19 @@ Algorithms.caesarCipher = function (string, shift) {
   return shifted_arr.join('');
 };
 
-// Write a function that takes two strings and returns the lenght of the longest common substring.
+// Write a function that takes two strings and returns the length of the longest common substring.
 Algorithms.commonSubstrings = function (stringOne, stringTwo) {
-  
+  let subStringLength = stringOne.length - 1;
+  while (subStringLength > 0) {
+    let idx = 0;
+    while (idx + subStringLength < stringOne.length) {
+      let subString = stringOne.substr(idx, idx + subStringLength);
+      if (stringTwo.includes(subString)) { console.log(subStringLength); return subStringLength+1; }
+      idx += 1;
+    }
+    subStringLength -= 1;
+  }
+  return 0;
 };
 
 // Write a function that takes an array of integers and returns their sum.
