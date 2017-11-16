@@ -9,19 +9,41 @@ if(typeof Algorithms === "undefined") {
 // Keep repeating until there is only one digit in the result, called the "digital root".
 // Do not use string conversion within your method.
 Algorithms.digitalRoot = function (number) {
-
+  let sum = 0;
+  console.log("Number",number);
+  while(number > 0) {
+    sum += number % 10;
+    number = (number - (number % 10)) / 10;
+  }
+  if(sum >= 10) { 
+    console.log("Sum", sum);
+    sum = Algorithms.digitalRoot(sum);
+  }
+  console.log("DONE", sum)
+  return sum;
 };
 
 // Write a function that takes a message and an increment amount and outputs the same letters shifted by that amount in the alphabet.
 // Assume lowercase and no punctuation.
 // Preserve spaces.
 Algorithms.caesarCipher = function (string, shift) {
-
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let string_arr = string.split('');
+  let shifted_arr = [];
+  string_arr.forEach((char) => {
+    if(char === ' ') { 
+      shifted_arr.push(char);
+    } else {
+      let idx = alphabet.indexOf(char);
+      shifted_arr.push(alphabet[(idx+shift) % alphabet.length]);
+    }
+  });
+  return shifted_arr.join('');
 };
 
 // Write a function that takes two strings and returns the lenght of the longest common substring.
 Algorithms.commonSubstrings = function (stringOne, stringTwo) {
-
+  
 };
 
 // Write a function that takes an array of integers and returns their sum.
