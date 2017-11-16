@@ -59,7 +59,8 @@ Algorithms.commonSubstrings = function (stringOne, stringTwo) {
 // Write a function that takes an array of integers and returns their sum.
 // Use recursion.
 Algorithms.sumRec = function (numbers) {
-
+  if (numbers.length === 0) { return 0 }
+  return numbers.shift() + Algorithms.sumRec(numbers)
 };
 
 // Write a function which returns the first n elements from the fibonnacci sequence, given n.
